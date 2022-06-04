@@ -15,7 +15,7 @@ class MigrateCommand extends Command
 {
     use ConfirmableTrait;
     
-    protected $signature = 'lucid:migrate {--f|--fresh} {--s|--seed} {--force}';
+    protected $signature = 'lucid:migrate {--f|--fresh} {--s|--seed} {--force} {--model-only}';
 
     public function handle()
     {
@@ -23,7 +23,9 @@ class MigrateCommand extends Command
             return 1;
         }
 
-        $this->call($this->option('fresh') ? 'migrate:fresh' : 'migrate', ['--force' => true]);
+        if (!$this->option('model-only')) {
+            $this->call($this->option('fresh') ? 'migrate:fresh' : 'migrate', ['--force' => true]);
+        }
 
         $this->migrateModels();
 
