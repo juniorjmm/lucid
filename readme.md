@@ -56,10 +56,12 @@ class MyModel extends Model
 Apply the changes inside your `migration` methods to your database:
 
 ```console
-php artisan lucid:migrate {--f|--fresh} {--s|--seed}
+php artisan lucid:migrate {--f|--fresh} {--s|--seed} {--model-only}
 ```
 
 Use the `-f` option for fresh migrations, and/or the `-s` option to run seeders afterwards.
+
+Use the `--model-only` option to skip migrations from traditional "database/migrations".
 
 ### Making Models
 
